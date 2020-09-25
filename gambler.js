@@ -68,6 +68,18 @@ function monthlyGambling()
     //Unluckiest Day
     console.log("Unluckiest Day : ")
     console.log(amount.slice(amount.length-2, amount.length-1));
+    }   
 }
+function playNextMonth() 
+{
+    monthlyGambling()
+    if(totalAmount>0)
+    {
+        console.log("Gambler playing for next month");
+    }
+    else
+    {
+        console.log("Stop gambling");
+    }
 }
-monthlyGambling()
+playNextMonth()
