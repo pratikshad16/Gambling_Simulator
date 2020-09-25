@@ -8,6 +8,7 @@ var cash=0
 var winningCash=0
 var totalAmount=0
 var dictionary={}
+var lucky_day=0
 
 function dailyGambling()
 {
@@ -45,5 +46,28 @@ function monthlyGambling()
     {
         console.log("Total  loosing amount of 30 days:"+totalAmount)
     }
+    sort()
+    function sort()
+ {
+    //Creating array of amount
+    var amount = Object.keys(dictionary).map(function(key)
+     {
+        return [key, dictionary[key]];
+     });
+
+    //Sort the array based on the second element
+    amount.sort(function(first, second)
+     {
+        return second[1] - first[1];
+     });
+
+    //Luckiest Day
+    console.log("Luckiest Day : ")
+    console.log(amount.slice(0,1));
+
+    //Unluckiest Day
+    console.log("Unluckiest Day : ")
+    console.log(amount.slice(amount.length-2, amount.length-1));
+}
 }
 monthlyGambling()
