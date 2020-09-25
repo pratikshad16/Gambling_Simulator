@@ -7,10 +7,12 @@ const TOTAL_DAYS = 30;
 var cash=0
 var winningCash=0
 var totalAmount=0
-var dictionary={}
-var lucky_day=0
+var sumOfAmount={}
 
-function dailyGambling()
+
+class Gambler {
+
+ dailyGambling()
 {
     winningCash=0
     cash=STAKE
@@ -29,14 +31,14 @@ function dailyGambling()
     winningCash=cash-STAKE
         return winningCash;
 }
-function monthlyGambling()
+ monthlyGambling()
 {
-    for(day = 1;day <= TOTAL_DAYS;day++)
+    for(let day = 1;day <= TOTAL_DAYS;day++)
     {
-        var cash = dailyGambling()
-        dictionary[day] = cash
-        totalAmount = totalAmount + dictionary[day];
-        console.log("Amount of day:"+day +":"+dictionary[day])
+        var cash = this.dailyGambling()
+        sumOfAmount[day] = cash
+        totalAmount = totalAmount + sumOfAmount[day];
+        console.log("Amount of day:"+day +":"+sumOfAmount[day])
     }
     if(totalAmount > 0)
     {
@@ -46,13 +48,14 @@ function monthlyGambling()
     {
         console.log("Total  loosing amount of 30 days:"+totalAmount)
     }
+    this.sort()
+}
     sort()
-    function sort()
- {
+    {
     //Creating array of amount
-    var amount = Object.keys(dictionary).map(function(key)
+    var amount = Object.keys(sumOfAmount).map(function(key)
      {
-        return [key, dictionary[key]];
+        return [key, sumOfAmount[key]];
      });
 
     //Sort the array based on the second element
@@ -69,17 +72,19 @@ function monthlyGambling()
     console.log("Unluckiest Day : ")
     console.log(amount.slice(amount.length-2, amount.length-1));
     }   
-}
-function playNextMonth() 
-{
-    monthlyGambling()
-    if(totalAmount>0)
+    playNextMonth() 
     {
-        console.log("Gambler playing for next month");
-    }
-    else
-    {
-        console.log("Stop gambling");
+        this.monthlyGambling()
+        if(totalAmount>0)
+        {
+            console.log("Your winning amount is high");
+            console.log("You can play for next month");
+        }
+        else
+        {
+            console.log("Your loosing amount is high");
+            console.log("Oops!! You have to stop now");
+        }
     }
 }
-playNextMonth()
+module.exports=  new Gambler()
