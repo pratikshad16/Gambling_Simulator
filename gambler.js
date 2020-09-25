@@ -2,7 +2,7 @@ const STAKE = 100;
 const BET =1;
 const UPPER_LIMIT = STAKE + (STAKE * 50 /100)
 const LOWER_LIMIT = STAKE - (STAKE * 50 /100)
-const TOTAL_DAYS = 20;
+const TOTAL_DAYS = 30;
 
 var cash=0
 var winningCash=0
@@ -39,11 +39,11 @@ function monthlyGambling()
     }
     if(totalAmount > 0)
     {
-        console.log("Total  winning amount of 20 days:"+totalAmount)
+        console.log("Total  winning amount of 30 days:"+totalAmount)
     }
     else
     {
-        console.log("Total  loosing amount of 20 days:"+totalAmount)
+        console.log("Total  loosing amount of 30 days:"+totalAmount)
     }
 }
 monthlyGambling()
