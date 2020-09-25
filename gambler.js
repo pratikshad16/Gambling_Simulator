@@ -1,12 +1,21 @@
-class Gambler {
-     constant(){
-         const STACK = 100;
-         const BET = 1;
+const STACK = 100;
+const BET =1;
+
+cash = STACK;
+var randomValue= Math.random()
+function gambleChecker()
+{
+    if (randomValue<0.5) 
+    {
+		console.log("Gambler win")
+        cash=cash+BET
+        console.log(cash);
     }
-     gambleChecker() {
-        var stake =100;
-        Math.random() > 0.5 ? (stake += 1) : (stake -= 1);
-        return stake;
-      }
+    else 
+    {
+		console.log("Gambler Lose")
+        cash=cash-BET
+        console.log(cash);
+    }
 }
-module.exports = new Gambler();
+gambleChecker()
