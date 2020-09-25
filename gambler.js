@@ -1,21 +1,23 @@
-const STACK = 100;
+const STAKE = 100;
 const BET =1;
+const UPPER_LIMIT = STAKE + (STAKE * 50 /100)
+const LOWER_LIMIT = STAKE - (STAKE * 50 /100)
 
-cash = STACK;
+cash = STAKE;
 var randomValue= Math.random()
 function gambleChecker()
 {
-    if (randomValue<0.5) 
+    while(cash != LOWER_LIMIT && cash != UPPER_LIMIT)
     {
-		console.log("Gambler win")
-        cash=cash+BET
-        console.log(cash);
-    }
-    else 
-    {
-		console.log("Gambler Lose")
-        cash=cash-BET
-        console.log(cash);
+        var randomValue= Math.random()   
+        if (randomValue<0.5) 
+        {
+            cash = cash + BET
+        }
+        else 
+        {
+            cash = cash - BET
+        }
     }
 }
 gambleChecker()
