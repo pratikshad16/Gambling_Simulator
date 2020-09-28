@@ -15,13 +15,11 @@ var cash = 0
 var totalAmount = 0
 var sumOfAmount = {}
 
-
 class Gambler {
     /**
      * Function to calculate daily gambling
      */
     dailyGambling() {
-
         cash = 100
         while (cash != LOWER_LIMIT && cash != UPPER_LIMIT) {
             var randomValue = Math.random() * 2
@@ -67,29 +65,32 @@ class Gambler {
                 console.log("Total loss in a month:" + (loose - win))
                 console.log("============================")
             }
-
             console.log("One month data")
             console.log("=====================================================================================================================")
             console.log(array.toString())
             console.log("=====================================================================================================================")
-            var max = array[0];
-            var min = array[0];
-            var luckiestDay = 1;
-            var unluckiestDay = 1;
-            for (var i = 1; i < array.length; i++) {
-                if (max < array[i]) {
-                    max = array[i]
-                    luckiestDay = i + 1;
-                }
-                if (min > array[i]) {
-                    min = array[i]
-                    unluckiestDay = i + 1;
-                }
-            }
-            console.log("Luckiest Day:  " + luckiestDay + " At Luckiest day gambler was at " + max + " rupees")
-            console.log("Unluckiest Day: " + unluckiestDay + " At Unluckiest day gambler was at " + min + " rupees")
-            console.log("---------------------------------------------------------------------------------------------------------------------")
         } while (win > loose)
+        return array;
+    }
+    luckyUnluckyDay(days) {
+        let array = this.monthlyGambling(days)
+        var max = array[0];
+        var min = array[0];
+        var luckiestDay = 1;
+        var unluckiestDay = 1;
+        for (var i = 1; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i]
+                luckiestDay = i + 1;
+            }
+            if (min > array[i]) {
+                min = array[i]
+                unluckiestDay = i + 1;
+            }
+        }
+        console.log("Luckiest Day:  " + luckiestDay + " At Luckiest day gambler was at " + max + " rupees")
+        console.log("Unluckiest Day: " + unluckiestDay + " At Unluckiest day gambler was at " + min + " rupees")
+        console.log("---------------------------------------------------------------------------------------------------------------------")
     }
 }
 module.exports = new Gambler()

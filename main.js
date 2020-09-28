@@ -1,8 +1,8 @@
 class Main {
-    main(){
+    main() {
         console.log("Welcome to Gambling Simulation Program");
-        const data=require('./Gambler')
-        data.monthlyGambling(30);
+        const data = require('./Gambler')
+        data.luckyUnluckyDay(30);
     }
 }
 const obj = new Main();
